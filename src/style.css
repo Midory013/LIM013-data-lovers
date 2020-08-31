@@ -80,32 +80,21 @@
         display: flex;
     }
     
-    .Attack {
-        color: ivory;
-    }
-    
-    .Defense {
-        color: ivory;
-    }
-    
-    .Magic {
-        color: ivory;
-    }
-    
-    .Difficulty {
-        color: #CCA43B;
+    .informationHeros {
+        display: flex;
+        flex-wrap: wrap;
     }
     
     .containerHero {
         width: 25%;
-        background-color: white;
-        background-color: rgba(192, 192, 192, 0.3);
-        align-content: center;
+        /* background-color: white;
+        background-color: rgba(192, 192, 192, 0.3);*/
+        text-align: center;
     }
     
-    .informationHeros {
-        display: flex;
-        flex-wrap: wrap;
+    .nameChampions {
+        font-size: 18px;
+        color: #CCA43B;
     }
     
     button {

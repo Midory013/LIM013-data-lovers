@@ -1,4 +1,5 @@
 import { filter } from './data.js';
+//console.log(assassin);
 import data from './data/lol/lol.js';
 let containerSeccion = document.getElementById("information");
 
@@ -29,30 +30,34 @@ for (const [key, value] of Object.entries(data.data)) {
     const containerHero = document.createElement("div");
     containerHero.className = "containerHero";
     const nameHero = document.createElement("p");
-    nameHero.innerHTML = id;
+    nameHero.innerHTML = id
+    nameHero.className = "nameChampions";
     containerHero.appendChild(nameHero);
 
     const newDivImg = document.createElement("img");
     newDivImg.setAttribute("src", img);
-    newDivImg.setAttribute("width", "250");
-    newDivImg.setAttribute("height", "250");
+    newDivImg.setAttribute("width", "150");
+    newDivImg.setAttribute("height", "150");
     containerHero.appendChild(newDivImg);
 
     const newDivAttack = document.createElement("p");
-    newDivAttack.innerHTML = "Attack: " + infoAttack;
-    newDivAttack.className = "attack";
+    newDivAttack.innerHTML = "<span style = 'color:green; font-weight: bolder;'>  Attack: </span>" + infoAttack;
+    newDivAttack.className = "aboutInfo";
     containerHero.appendChild(newDivAttack);
 
     const newDivDefense = document.createElement("p");
-    newDivDefense.innerHTML = "Defense: " + infoDefense;
+    newDivDefense.innerHTML = "<span style = 'color:green; font-weight: bolder;'> Defense: </span>" + infoDefense;
+    newDivAttack.className = "aboutInfo";
     containerHero.appendChild(newDivDefense);
 
     const newDivMagic = document.createElement("p");
-    newDivMagic.innerHTML = "Magic:  " + infoMagic;
+    newDivMagic.innerHTML = "<span style = 'color:green;font-weight: bolder;'> Magic: </span>" + infoMagic;
+    newDivAttack.className = "aboutInfo";
     containerHero.appendChild(newDivMagic);
 
     const newDivDifficulty = document.createElement("p");
-    newDivDifficulty.innerHTML = "Difficulty:  " + infoDifficulty;
+    newDivDifficulty.innerHTML = "<span style = 'color:green;font-weight: bolder;'> Difficulty: </span>" + infoDifficulty;
+    newDivAttack.className = "aboutInfo";
     containerHero.appendChild(newDivDifficulty);
 
 
