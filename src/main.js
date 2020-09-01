@@ -1,7 +1,7 @@
 import { filter } from './data.js';
-//console.log(assassin);
+
 import data from './data/lol/lol.js';
-let containerSeccion = document.getElementById("information");
+
 
 
 
@@ -70,8 +70,17 @@ for (const [key, value] of Object.entries(data.data)) {
 
 };
 
+function typeFilter(event) {
+    console.log(event.target.id)
+}
 
+// querySelectorAll arreglo con los elmentos coincidad 
+let btnFilter = document.querySelectorAll('.btnFilter')
 
+// recorremos el arreglo para asignar el evento
+for (let i = 0; i < btnFilter.length; i++) {
+    btnFilter[i].addEventListener('click', typeFilter)
+}
 
 /*const newDivInfo = document.createElement("text");
 newDivName.innerHTML = info;

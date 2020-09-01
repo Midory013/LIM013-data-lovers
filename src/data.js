@@ -1,18 +1,28 @@
-// estas funciones son de ejemplo
+ //estas funciones son de ejemplo
 
 
-import lol from "./data/lol/lol.js";
+ import lol from "./data/lol/lol.js";
+ const arrayChampions = Object.values(lol.data);
 
-export const filter = () => {
 
-    //Array.prototype.filter()
-    //1.Filtr la el tipo de cameón con aquellos que son asesinos
-    const assassin = data.lol.filter(item => item.tags.assassin);
-    //Array.prototype.sort()
-    //1.Ordenar los campeones de la A-Z o Z-A
-    return 'filter';
-};
+ export const filter = {
 
-export const anotherExample = () => {
-    return 'OMG';
-};
+     type: function() {
+         const resultLol = arrayChampions.filter((objetoCampeon) => {
+             return objetoCampeon.tags.includes("Assassin");
+         });
+         console.log(resultLol);
+         return resultLol;
+     }
+ };
+
+
+ //console.log(filterAssassin);
+
+
+
+
+
+ export const anotherExample = () => {
+     return 'OMG';
+ };
