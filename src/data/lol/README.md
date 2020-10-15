@@ -38,5 +38,4 @@ Se obtuvo de la encuesta:
 
 [Informacion](file:///C:/Users/republica%20del%20peru/Downloads/InformacionLol.webp) [Relevante](file:///C:/Users/republica%20del%20peru/Downloads/lol3.webp) [Relevante](file:///C:/Users/republica%20del%20peru/Downloads/lol3.webp) [Relevante](file:///C:/Users/republica%20del%20peru/Downloads/lol3.webp) [Gusta](file:///C:/Users/republica%20del%20peru/Downloads/lol4.webp) [Frecuencia](file:///C:/Users/republica%20del%20peru/Downloads/frecuencia.webp) [Años](file:///C:/Users/republica%20del%20peru/Downloads/a%C3%B1os.webp)
 
-##### 
 
