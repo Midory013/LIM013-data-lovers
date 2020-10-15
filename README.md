@@ -325,16 +325,13 @@ a obtener, procesar y manipular datos (tus funciones). Por ejemplo:
   ascendente o descendente.
 
 * `computeStats(data)`: la función `compute` o calcular, nos permitirá hacer
-  cálculos estadísticos básicos para ser mostrados de acuerdo a la data
-  proporcionada.
+  cálculos estadísticos básicos para ser mostrados de acuerdo a la data proporcionada.
 
-Estos nombres de funciones y de parámetros son solamente referenciales, lo que
-decidas depende de tu propia implementación.
+Estos nombres de funciones y de parámetros son solamente referenciales, lo que decidas depende de tu propia implementación.
 
 Estas funciones deben ser [_puras_](https://medium.com/laboratoria-developers/introducci%C3%B3n-a-la-programaci%C3%B3n-funcional-en-javascript-parte-2-funciones-puras-b99e08c2895d)
 e independientes del DOM. Estas funciones serán después usadas desde el archivo
-`src/main.js`, al cargar la página, y cada vez que el usuario interactúe (click,
-filtrado, ordenado, ...).
+`src/main.js`, al cargar la página, y cada vez que el usuario interactúe (click, filtrado, ordenado, ...).
 
 ### `src/data`
 

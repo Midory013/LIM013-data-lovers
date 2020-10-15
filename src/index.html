@@ -1,66 +1,55 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="es">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Lovers</title>
-    <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LOL</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="shortcut icon" href="LOG/btn_Logo.png"/>
 </head>
-
 <body>
-    <header>
-        <nav>
-            <div id="rectangle" class="">
-                <img src="img/LOGO.png" alt="" class="imgLog">
-                <div>
-                    <input type="search" placeholder="  Search Champion" class="search">
-                    <a class="search-btn" href="#"></a>
-                </div>
-                <ol>
-                    <li><a href="https://na.leagueoflegends.com/en-us/latest-news/">NEWS</a></li>
-                    <li><a href="#">EVENTS</a></li><br>
-                    <li><a href="#">UPDATES</a></li>
-                </ol>
-            </div>
-        </nav>
-    </header>
-    <h1>CHAMPIONS</h1>
-    <main>
-
-        <aside>
-            <button class="btnFilter" type="button"><img id="assassin" src="img/ASSASSINELIPSE.png" alt=""></button><br><br><br><br>
-            <button class="btnFilter" type="button"><img id="fighter" src="img/fighterelipse.png" alt=""></button><br><br><br><br>
-            <button class="btnFilter" type="button"><img id="mage" src="img/MAGEELIPSE.png" alt=""></button><br><br><br><br>
-            <button class="btnFilter" type="button"><img id="marksmen" src="img/MARKSMENELIPSE.png" alt=""></button><br><br><br><br>
-            <button class="btnFilter" type="button"><img id="tank" src="img/TANKELIPSE.png" alt=""></button><br><br><br><br>
-            <button class="btnFilter" type="button"><img id="support"src="img/SUPPORTELIPSE.png" alt=""></button>
-        </aside>
-        <!--Show Champions-->
-        <section id="information" class="informationHeros">
-            <!--<div id="AllChampions">
-            </div>
-            <div id="AllImgChampions">
-            </div>
-            <div id="AllInfoChampions">
-                <div id="divAttack">Attack</div>
-                <div id="divDefense">Defense</div>
-                <div id="divMagic">Magic</div>
-                <div id="divDifficulty">Difficulty</div>
-            </div>-->
-        </section>
-        <section>
-            <div id="filter" class="allFilter"></div>
-        </section>
-    </main>
-    <br>
-    <footer>
-        <div id="rectanglefooter" class="">
-        </div>
-    </footer>
-    <div id="root"></div>
-    <script src="main.js" type="module"></script>
-
+  <div class="nav">
+    <a href="#" class="navbar-brand">
+      <img src="LOG/lol-logo.png" width="100px" alt="" />
+    </a>
+    <input type="checkbox" id="btn_nav" />
+    <label for="btn_nav">
+      <img src="LOG/btn_Logo.png" width="30px" alt="" />
+    </label>
+    <div class="navbar">
+      <ul>
+        <li><a href="#" class="inicio" id="inicio">Inicio</a></li>
+        <li><a href="InformacionJuego.html" class="calInfo">¿Que es LOL?</a></li>
+      </ul>
+    </div>
+  </div>
+  <main>
+    <div class="contenedor" id="div1">
+      <div class="search">
+        <input type="text" class="css-input" name="" id="buscar" placeholder="search"/>
+        <select name="" id="selectChampion">
+          <option value="all">Type Champions</option>
+          <option value="Assassin">Assassin</option>
+          <option value="Fighter">Fighter</option>
+          <option value="Mage">Mage</option>
+          <option value="Marksman">Marksmen</option>
+          <option value="Tank">Tank</option>
+          <option value="Support">Support</option>
+        </select>
+        <select name="" id="ordenar">
+          <option value="A-Z">A-Z</option>
+          <option value="Z-A">Z-A</option>
+        </select>
+        <button id="estadistica">Max-Min HP Type Champions</button>   
+      </div>
+      <section>
+        <div class="tarjetas" id="container-card"></div>   
+      </section>
+    </div>
+  </main>
+  <section>
+    <div class="containerEsta" id="div2"></div>
+  </section> 
+<script src="main.js" type="module"></script>
 </body>
-
 </html>

@@ -1,141 +1,122 @@
-import { filter } from './data.js';
+import { lolfilter, lolBuscar, lolOrdenar, lolOrdenarEstad} from './data.js';
+import lol from './data/lol/lol.js';
 
-import data from './data/lol/lol.js';
+const lolChampions = Object.values(lol.data)
+const containerCard=document.querySelector("#container-card");
+const containerEstadistica = document.getElementById('div2');
+const inputBuscar = document.getElementById("buscar")
+const selectChampion = document.querySelector('#selectChampion')
+const ordenarChampion = document.querySelector('#ordenar')
+const estadistica = document.getElementById('estadistica')
+//------------------------------------------------------Buscar por nombre de campeon--------------------------------------------------
+inputBuscar.addEventListener('keyup',()=>{
+let rst = []
+let  buscar = inputBuscar.value.toUpperCase()
+LimpiarTarjetas()
+if(buscar){
+  rst = lolBuscar(lolChampions,buscar)
+  }
+else {
+  rst  =  lolChampions;
+} 
+MostrarChampions(rst)
+});
+//----------------------------------------Filtrado por Typo de campeon------------------------------------
+let rst =[];
+selectChampion.addEventListener('change',(e)=>{
+//let rst =[]
+  // const select = selectChampion.value
+  LimpiarTarjetas()
 
+  if(e.target.value === 'all')
+    rst  =  lolChampions
+  else{
+    rst = lolfilter(lolChampions, e.target.value);  
+  }
 
-
-
-/*const LOLData = data.lol;
-
-
-console.log('cantidad:' + LOLData.length);*/
-//function mostrar todos los campeones
-
-for (const [key, value] of Object.entries(data.data)) {
-    let id = value.id;
-    console.log(id);
-    let img = value.img;
-    console.log(img);
-    let infoAttack = value.info.attack;
-    console.log(infoAttack);
-    let infoDefense = value.info.defense;
-    console.log(infoDefense);
-    let infoMagic = value.info.magic;
-    console.log(infoMagic);
-    let infoDifficulty = value.info.difficulty;
-    console.log(infoDifficulty);
-
-
-    const infoChampions = document.getElementById("information");
-    const containerHero = document.createElement("div");
-    containerHero.className = "containerHero";
-    const nameHero = document.createElement("p");
-    nameHero.innerHTML = id
-    nameHero.className = "nameChampions";
-    containerHero.appendChild(nameHero);
-
-    const newDivImg = document.createElement("img");
-    newDivImg.setAttribute("src", img);
-    newDivImg.setAttribute("width", "150");
-    newDivImg.setAttribute("height", "150");
-    containerHero.appendChild(newDivImg);
-
-    const newDivAttack = document.createElement("p");
-    newDivAttack.innerHTML = "<span style = 'color:green; font-weight: bolder;'>  Attack: </span>" + infoAttack;
-    newDivAttack.className = "aboutInfo";
-    containerHero.appendChild(newDivAttack);
-
-    const newDivDefense = document.createElement("p");
-    newDivDefense.innerHTML = "<span style = 'color:green; font-weight: bolder;'> Defense: </span>" + infoDefense;
-    newDivAttack.className = "aboutInfo";
-    containerHero.appendChild(newDivDefense);
-
-    const newDivMagic = document.createElement("p");
-    newDivMagic.innerHTML = "<span style = 'color:green;font-weight: bolder;'> Magic: </span>" + infoMagic;
-    newDivAttack.className = "aboutInfo";
-    containerHero.appendChild(newDivMagic);
-
-    const newDivDifficulty = document.createElement("p");
-    newDivDifficulty.innerHTML = "<span style = 'color:green;font-weight: bolder;'> Difficulty: </span>" + infoDifficulty;
-    newDivAttack.className = "aboutInfo";
-    containerHero.appendChild(newDivDifficulty);
-
-
-    infoChampions.appendChild(containerHero);
-    /*const newDivName = document.createElement("p");
-    newDivName.innerHTML = id;
-    document.getElementById("AllChampions").appendChild(newDivName);*/
-
-    // document.querySelector("#AllInfoChampions").innerHTML += info
-
-};
-
-function typeFilter(event) {
-    console.log(event.target.id)
-}
-
-// querySelectorAll arreglo con los elmentos coincidad 
-let btnFilter = document.querySelectorAll('.btnFilter')
-
-// recorremos el arreglo para asignar el evento
-for (let i = 0; i < btnFilter.length; i++) {
-    btnFilter[i].addEventListener('click', typeFilter)
-}
-
-/*const newDivInfo = document.createElement("text");
-newDivName.innerHTML = info;
-document.getElementById("AllInfoChampions").appendChild(newDivInfo);*/
-
-
-
-
-
-
-
-
-/*for (let value of Object.values(data)) {
-    console.log(data.data);
-
-    for (let i = 0; i < 7; i++) {
-        let id = data.data[i].id;
-        console.log(id);
-    }
-
-}*/
-
-
-
-
-//let newData = data.lol.type;
-
-//console.log(newData);
-// import data from './data/pokemon/pokemon.js';
-// import data from './data/rickandmorty/rickandmorty.js';
-/*for (var [key, value] of Object.entries(data.data)) {
-    console.log(key + value.id + value.img + value.tags + value);}*/
-
-//console.log(data.data.length);
-
-
-/*const rectangle = document.getElementById("rectangle");
-const nameLogo1 = document.getElementById("nameLogo1");
-//Para ocultar la primera pantalla
-play.addEventListener("click", () => {
-    // alert('Click')
-    logo.classList.add("ocultar");
-    play.classList.add("ocultar");
-    userName.classList.add("ocultar");
-    hello.classList.remove("ocultar");
-    showName.classList.remove("ocultar");
-
-    nameLogo1.classList.remove("ocultar");
-
+  MostrarChampions(rst)
 })
+//----------------------------CALCULO------------------------------------------------
+estadistica.addEventListener('click', ()=> {
+  containerCard.style.display="none";
+  containerEstadistica.style.display="flex";
+  containerEstadistica.innerHTML="";
+  const hp = lolOrdenarEstad(rst);
+  [hp[0],hp[hp.length -1]].forEach((valor) => {
+    const cardEsta=document.createElement('div');
+    cardEsta.classList.add('cardEstadis');
+    
+    let imagen = valor.splash;
+    let nombre = valor.name;
+    let vida = valor.stats.hp;
+    let mana = valor.stats.mp;
+    let armor = valor.stats.armor;
+    let cardEstadistica = 
+    `
+      <figure>
+        <img src="${imagen}">
+      </figure>
+      <div class="datoCardEsta">
+        <h3><strong>${nombre}</strong></h3>
+        <p>HP:  ${vida} </p>
+        <p>MP:  ${mana} </p>
+        <p>ARMOR:  ${armor} </p>
+      <!--<a href="#">Leer Màs</a>-->
+      </div>
+    `
+    cardEsta.innerHTML=cardEstadistica;
+    containerEstadistica.appendChild(cardEsta)
+  });
+});  
+//----------------------------Ordenar A-Z---Z-A------------------------------------------------
+ordenarChampion.addEventListener('change', (o) => {
+  let ord = []
+  ord = lolOrdenar(lolChampions,o.target.value) 
+  //console.log(o.target.value);
+  MostrarChampions(ord)
+})
+//------------------------------------Mostrar Campeones---------------------------------------
+const MostrarChampions = (lolChampions)=>{
+  containerCard.innerHTML=''
+  //const stadistica = calculo(lolChampions)
+  for (let i = 0; i < lolChampions.length; i++) {  
+    const championCard=document.createElement('div');
+    championCard.classList.add('card');
+    const img = lolChampions[i].splash;
+    const name = lolChampions[i].name;
+    const attack = lolChampions[i].info.attack;
+    const defense = lolChampions[i].info.defense;
+    const magic = lolChampions[i].info.magic;
+    const difficulty = lolChampions[i].info.difficulty;
+    let cardChampions=
+    ` 
+    <figure>
+        <img src="${img}">
+      </figure>
+      <div class="contenido-card">
+          <h3><strong>${name}</strong></h3>
+          <p>Attack: ${attack} </p>
+          <p>Defense: ${defense}</p>
+          <p>Magic:${magic}</p>
+          <p>Difficulty: ${difficulty}</p>
+        <!--<a href="#">Leer Màs</a>-->
+      </div>
+    `
+    championCard.innerHTML=cardChampions;
+    containerCard.appendChild(championCard);
+    }
+  }
 
-let letsPlay = document.getElementById("play");
-letsPlay.addEventListener("click", () => {
-    let names = document.getElementById("userName").value;
-    let userNames = names;
-    document.getElementById("showName").innerHTML = userNames;
-    return userNames
-});*/
+//-----------------------------------------------------------------------------------------
+function LimpiarTarjetas(){
+  let cards = Array.prototype.slice.call(document.querySelectorAll('card-Limpiar'),0)//getElementsByClassName
+  for(let card of cards){
+    card.remove() 
+  }
+}
+//-----------------------------------------------------------------------------------------
+window.onload = function(){
+  document.getElementById("div2").style.display="none";
+  //mostrar(lolData)
+  MostrarChampions(lolChampions)
+}
