@@ -1,4 +1,4 @@
-# League of Legends (LoL)
+# Data Lovers
 ## League of Legends by Midory Flores 
 ## Índice
 
